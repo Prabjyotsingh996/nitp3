@@ -33,6 +33,15 @@ function AppWrapper() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
+    // Set or remove data-theme="dark" on <body>
+    if (darkMode) {
+      document.body.setAttribute("data-theme", "dark");
+    } else {
+      document.body.removeAttribute("data-theme");
+    }
+  }, [darkMode]);
+
+  useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("chatMessages"));
     if (stored && Array.isArray(stored)) {
       setMessages(stored);
