@@ -1,12 +1,37 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/style.css';
 
 const SignIn = ({ darkMode }) => {
   const navigate = useNavigate();
 
+   const logoStyle = {
+    position: 'absolute',
+    width: '400px', // increased from 60px to 100px
+    height: 'auto',
+    zIndex: 10,
+  };
+
+
+  const topLeftStyle = {
+    ...logoStyle,
+    top: '1rem',
+    left: '1rem',
+  };
+
+  const topRightStyle = {
+    ...logoStyle,
+    top: '1rem',
+    right: '1rem',
+  };
+
   return (
-    <div className={darkMode ? 'auth-wrapper dark-mode' : 'auth-wrapper'}>
+    <div className={darkMode ? 'auth-wrapper dark-mode' : 'auth-wrapper'} style={{ position: 'relative' }}>
+      {/* Logo Top Left */}
+      <img src="images/ku logo.png" alt="Left Logo" style={topLeftStyle} />
+
+      {/* Logo Top Right */}
+      <img src="images/nit logo.png" alt="Right Logo" style={topRightStyle} />
+
       <div className="auth-illustration left">
         <img src="images/i1.png" alt="Illustration" />
       </div>
@@ -41,7 +66,6 @@ const SignIn = ({ darkMode }) => {
             Don’t have an account? <Link to="/signup">Sign up</Link>
           </p>
 
-          {/* Button version of Back to Home */}
           <div className="back-to-home">
             <button onClick={() => navigate('/')} className="btn secondary">
               ← Back to Home
